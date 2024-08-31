@@ -75,11 +75,13 @@ const Notification = ({ name, description, icon, color, time }) => {
 
 function App() {
   const [showButton, setShowButton] = useState(true);
+  const [showGun, setShowGun] = useState(false); // New state for gun visibility
   const [currentImage, setCurrentImage] = useState("dem1.png");
   const videoRef = useRef(null);
 
   const handleButtonClick = () => {
     setShowButton(false);
+    setShowGun(true); // Show gun when button is clicked
     setCurrentImage("dem2.png");
     if (videoRef.current) {
       videoRef.current.play();
@@ -133,7 +135,14 @@ function App() {
         </Marquee>
       </div>
 
-      <img src={currentImage} className="absolute bottom-0 right-[2%] w-[70%] md:w-[35%] z-10" alt="Demon" />
+      <img src={currentImage} className="absolute bottom-0 right-[2%] w-[70%] md:w-[35%] z-20" alt="Demon" />
+
+      {showGun && (
+        <motion.img
+          src="gun.png"
+          className='absolute bottom-0 right-[5%] md:-right-[5%] rotate-[60deg] transform -scale-x-100 w-[100%] md:w-[75%] z-10'
+        />
+      )}
       
       <video
         ref={videoRef}
