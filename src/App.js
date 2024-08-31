@@ -129,7 +129,7 @@ function App() {
 
       <div className=''>
         <Marquee>
-
+          {/* Add content for Marquee if needed */}
         </Marquee>
       </div>
 
@@ -142,6 +142,9 @@ function App() {
         style={{ display: showButton ? 'none' : 'block' }}
         loop
         muted={false}
+        playsInline
+        webkit-playsinline="true"
+        preload="auto"
       />
     </div>
   );
