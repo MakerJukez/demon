@@ -135,7 +135,7 @@ function App() {
         </Marquee>
       </div>
 
-      <img src={currentImage} className="absolute bottom-0 right-[2%] w-[70%] md:w-[35%] z-20" alt="Demon" />
+      <img src={currentImage} className="absolute bottom-0 md:right-[2%] w-[70%] md:w-[35%] z-20" alt="Demon" />
 
       {showGun && (
         <motion.img
