@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import backgroundImage from './bg1.png'; // Ensure the correct path to your bg.png';
-import Xlogo from "./XLogo.jpg";
+import backgroundImage from './bg1.png';
 import TG from "./TG.png";
 import { cn } from "./lib/utils";
 import { AnimatedList } from './animated-list';
@@ -9,38 +8,31 @@ import Marquee from "react-fast-marquee";
 
 let notifications = [
   {
-    name: "Iggy Azalea",
-    description: "the cat is cute",
+    name: "Kook",
+    description: "let's run this shit",
     time: "15m ago",
-    icon: "iggy.png",
+    icon: "kook.jpg",
     color: "#00C9A7",
   },
   {
     name: "Sahil",
-    description: "you launched without me?",
+    description: "just put the tweet out when I send CA",
     time: "12m ago",
     icon: "sahil.png",
     color: "#00C9A7",
   },
   {
-    name: "yelo",
-    description: "when can I call it",
+    name: "6ix9ine",
+    description: "FUCKING HYPE N***A",
     time: "10m ago",
-    icon: "yelo.jpg",
+    icon: "69.jpg",
     color: "#00C9A7",
   },
   {
-    name: "Ansem",
-    description: "let me run the socials dawg",
-    time: "7m ago",
-    icon: "ansem.jpg",
-    color: "#00C9A7",
-  },
-  {
-    name: "Jason Derulo",
-    description: "bought some",
-    time: "5m ago",
-    icon: "JasonDerulo.jpg",
+    name: "Wolf",
+    description: "just wait till I start shilling...",
+    time: "10m ago",
+    icon: "wolf.jpg",
     color: "#00C9A7",
   },
 ];
@@ -52,17 +44,14 @@ const Notification = ({ name, description, icon, color, time }) => {
     <figure
       className={cn(
         "relative mx-auto min-h-fit w-full max-w-[400px] transform cursor-pointer overflow-hidden rounded-2xl p-4",
-        // animation styles
         "transition-all duration-200 ease-in-out hover:scale-[103%]",
-        // light styles
         "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
-        // dark styles
         "transform-gpu dark:bg-transparent dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
       )}
     >
       <div className="flex flex-row items-center gap-3">
         <div
-          className="flex h-10 w-10 items-center justify-center rounded-2xl overflow-hidden"
+          className="flex size-12 items-center justify-center rounded-2xl overflow-hidden"
           style={{
             backgroundColor: color,
           }}
@@ -85,31 +74,35 @@ const Notification = ({ name, description, icon, color, time }) => {
 };
 
 function App() {
-  const [copied, setCopied] = useState(false);
+  const [showButton, setShowButton] = useState(true);
+  const [currentImage, setCurrentImage] = useState("dem1.png");
+  const videoRef = useRef(null);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText('B53nkGQmsQH9EC4Qgx1LtwE17FAs8p3EPmSrK7VMpump');
-    setCopied(true);
-    setTimeout(() => {
-      setCopied(false);
-    }, 2000); // Hide the message after 2 seconds
+  const handleButtonClick = () => {
+    setShowButton(false);
+    setCurrentImage("dem2.png");
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
   };
 
   return (
-    <div
-      className="h-screen w-screen flex justify-center items-center bg-zinc-950 overflow-clip relative"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center center',
-        backgroundSize: 'contain',
-      }}
-    >
-      <div className='absolute top-0 left-0 right-0 border-y-4 bg-white border-orange-300 py-2 text-3xl md:text-7xl rotate-45 translate-x-[20%] translate-y-[50%] font-custom'>
-        <Marquee speed={170}>
-          $maxi $maxi $maxi $maxi $maxi $maxi $maxi $maxi $maxi $maxi $maxi $maxi $maxi $maxi $maxi&nbsp;
-        </Marquee>
-      </div>
+    <div className="h-screen w-screen flex justify-center items-center bg-[#FF0707] overflow-clip relative">
+      {showButton && (
+        <motion.button
+          className="absolute z-30 px-8 py-4 bg-black text-[#FF0707] font-bold text-3xl"
+          onClick={handleButtonClick}
+          whileHover={{ scale: 1.1 }}
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          ACTIVATE
+        </motion.button>
+      )}
       
       <div className='absolute top-5 left-5 right-5 z-20'>
         <AnimatedList>
@@ -118,45 +111,38 @@ function App() {
           ))}
         </AnimatedList>
       </div>
+
+      <div className="absolute top-5 font-semibold text-xs md:text-base">CA: XXXXXXXXXXXXXXXX</div>
       
-      <div className="absolute bottom-10 right-10 flex flex-col items-center z-10">
-        <div className="flex flex-row">
-          <a href="https://x.com/maxitoken" className="p-2 hover:scale-110 transition ease-in-out duration-200">
-            <img src={Xlogo} alt="Xlogo" className="w-14 h-14 rounded-md" />
+      <div className='absolute bottom-5 left-5 flex justify-center items-center z-10'>
+          <a href="https://x.com/" className=''>
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" className='size-10 md:size-12 md:hover:scale-105 transition ease-in-out duration-150' fill="#00000" viewBox="0 0 50 50">
+              <path d="M 6.9199219 6 L 21.136719 26.726562 L 6.2285156 44 L 9.40625 44 L 22.544922 28.777344 L 32.986328 44 L 43 44 L 28.123047 22.3125 L 42.203125 6 L 39.027344 6 L 26.716797 20.261719 L 16.933594 6 L 6.9199219 6 z"></path>
+            </svg>
           </a>
-          <a href="https://t.me/maxitoken" className="p-2 hover:scale-110 transition ease-in-out duration-200">
-            <img src={TG} alt="Tg logo" className="w-14 h-14" />
+          <a href="https://t.me/" className=''>
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" className='size-10 md:size-12 md:hover:scale-105 transition ease-in-out duration-150' fill="#00000" viewBox="0 0 50 50">
+              <path d="M46.137,6.552c-0.75-0.636-1.928-0.727-3.146-0.238l-0.002,0C41.708,6.828,6.728,21.832,5.304,22.445	c-0.259,0.09-2.521,0.934-2.288,2.814c0.208,1.695,2.026,2.397,2.248,2.478l8.893,3.045c0.59,1.964,2.765,9.21,3.246,10.758	c0.3,0.965,0.789,2.233,1.646,2.494c0.752,0.29,1.5,0.025,1.984-0.355l5.437-5.043l8.777,6.845l0.209,0.125	c0.596,0.264,1.167,0.396,1.712,0.396c0.421,0,0.825-0.079,1.211-0.237c1.315-0.54,1.841-1.793,1.896-1.935l6.556-34.077	C47.231,7.933,46.675,7.007,46.137,6.552z M22,32l-3,8l-3-10l23-17L22,32z"></path>
+            </svg>
           </a>
-        </div>
       </div>
 
-      <div className="absolute inset-0 flex flex-col justify-center items-center">
-        <div
-          className="flex justify-center items-center h-full"
-        >
-          <motion.img
-            whileHover={{ scale: 1.1, rotate: 10 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-            src="/maxi.png"
-            alt="Tunes"
-            className="-mt-[7.5%] w-[50%] md:w-[30%] h-auto border rounded-md"
-          />
-        </div>
+      <div className=''>
+        <Marquee>
+
+        </Marquee>
       </div>
+
+      <img src={currentImage} className="absolute bottom-0 right-[2%] w-[70%] md:w-[35%] z-10" alt="Demon" />
       
-      <div className='absolute bottom-10 left-10 flex justify-center'>
-        <div className='flex flex-col sm:flex-row justify-center bg-slate-100 rounded-xl md:rounded-full z-10 items-center gap-1 md:gap-4 px-5 py-3 max-w-full border-2 border-slate-400'>
-          <button
-            onClick={handleCopy}
-            className="text-sm bg-orange-400 text-white py-2 px-4 rounded-full md:hover:bg-orange-500 border-2 border-white transition-colors duration-300 z-10 whitespace-nowrap"
-          >
-            {copied ? 'Copied!' : 'Copy'}
-          </button>
-          <div className='text-xs sm:text-sm md:text-base overflow-x-auto whitespace-nowrap'>
-          B53nkGQmsQH9EC4Qgx1LtwE17FAs8p3EPmSrK7VMpump
-          </div>
-        </div>
-      </div>
+      <video
+        ref={videoRef}
+        src="demon.mp4"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ display: showButton ? 'none' : 'block' }}
+        loop
+        muted={false}
+      />
     </div>
   );
 }
