@@ -113,7 +113,7 @@ function App() {
         </AnimatedList>
       </div>
 
-      <div className="absolute top-5 font-semibold text-xs md:text-base">CA: XXXXXXXXXXXXXXXX</div>
+      <div className="absolute top-5 font-semibold text-xs md:text-base">CA: 6rew7kiJmDM8D9G9fPj9U9SECu8poRkziZpVEu9wpump</div>
       
       <div className='absolute bottom-5 left-5 flex justify-center items-center z-10'>
           <a href="https://x.com/goingdemon" className=''>
