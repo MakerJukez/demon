@@ -94,7 +94,6 @@ function App() {
         <motion.button
           className="absolute z-30 px-8 py-4 bg-black text-[#FF0707] font-bold text-3xl"
           onClick={handleButtonClick}
-          whileHover={{ scale: 1.1 }}
           animate={{ scale: [1, 1.05, 1] }}
           transition={{
             duration: 1.5,
